@@ -10,12 +10,13 @@ use Ciri\dto\MovieDto;
 class MovieDaoImpl implements MovieDao
 {
 
+    //GET
 
     public function all()
     {
         $movies = Pelicula::all();
-        $movieDto = array();
-        foreach ($movies as $movie) {
+        $movieDto = array(); //Creamos un array
+        foreach ($movies as $movie) { //Llenamos ese array con peliculas
             $movieDto[] = new MovieDto(
                 $movie->id,
                 $movie->title,
@@ -24,7 +25,7 @@ class MovieDaoImpl implements MovieDao
                 $movie->director_id
             );
         }
-        return $movieDto;
+        return $movieDto; //Devolvemos el array con todas las peliculas en su interior
     }
 
 

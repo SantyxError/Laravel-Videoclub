@@ -16,13 +16,21 @@ use Illuminate\Http\JsonResponse;
 class PeliculaController extends Controller
 {
 
-    private MovieService $movieService; //Importante crear esto
+    private MovieService $movieService; // Instanciamos un servicio
+
+
+    //Dentro del constructor:
+    //- Usamos el middleware para poner las excepciones a los metodos que deseemos con el sanctum
+    //- Creamos el servicio que hemos instanciado antes
 
     public function __construct()
     {
         $this->middleware('auth:sanctum', ['except' => ['index', 'show']]);
         $this->movieService = new MovieServiceImpl();
     }
+
+
+    //-------------------------------------------------------GET-----------------------------------------------------------------
 
     // public function index()
     // {
@@ -33,10 +41,11 @@ class PeliculaController extends Controller
     public function index()
     {
 
-        $movies = $this->movieService->all();
-        return response()->json($movies, 200);
+        $movies = $this->movieService->all(); //llamamos al metodo all() del servicio
+        return response()->json($movies, 200); //devolvemos la pelicula y el codigo 200
     }
 
+    //-------------------------------------------------------PUT-----------------------------------------------------------------
 
     // public function store(Request $request)
     // {
@@ -63,6 +72,8 @@ class PeliculaController extends Controller
     }
 
 
+    //-------------------------------------------------------GETBYID-----------------------------------------------------------------
+
     // public function show(Pelicula $pelicula)
     // {
     //     return response()->json($pelicula, 200);
@@ -74,7 +85,7 @@ class PeliculaController extends Controller
         return response()->json($movie, 200);
     }
 
-
+    //-------------------------------------------------------UPDATE-----------------------------------------------------------------
 
     // public function update(Request $request, Pelicula $pelicula)
     // {
@@ -101,6 +112,7 @@ class PeliculaController extends Controller
         return response()->json($this->movieService->update($pelicula, $id), 200);
     }
 
+    //-------------------------------------------------------DELETE-----------------------------------------------------------------
 
     // public function destroy(Pelicula $pelicula)
     // {

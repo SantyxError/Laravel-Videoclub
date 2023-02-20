@@ -5,6 +5,8 @@ namespace Ciri\dto;
 class MovieDto implements \JsonSerializable
 {
 
+
+    //PROPIEDADES
     private ?int $id;
     private string $title;
     private int $year;
@@ -12,6 +14,7 @@ class MovieDto implements \JsonSerializable
     private int $director_id;
 
 
+    //CONSTRUCTOR
     public function __construct(?int $id, string $title, int $year, int $duration, int $director_id)
     {
         $this->id = $id;
@@ -21,6 +24,8 @@ class MovieDto implements \JsonSerializable
         $this->director_id = $director_id;
     }
 
+
+    // METODOS PARA ACCEDER A LAS PROPIEDADES
     public function getId(): int
     {
         return $this->id;
@@ -48,6 +53,10 @@ class MovieDto implements \JsonSerializable
     {
         return $this->director_id;
     }
+
+
+
+    //METODO DEL JSONSERIALIZE
 
     public function jsonSerialize()
     {

@@ -7,13 +7,15 @@ use Ciri\dto\MovieDto;
 interface MovieDao
 {
 
-    public function all();
 
-    public function findById(int $id);
+    //Interfaz donde irá la lógica de la aplicación
+    public function all(); //GET
 
-    public function save(MovieDto $movieDto): bool;
+    public function findById(int $id); //GET by ID
 
-    public function update(MovieDto $request, $id): MovieDto;
+    public function save(MovieDto $movieDto): bool;  //POST
 
-    public function delete($id): bool;
+    public function update(MovieDto $request, $id): MovieDto; //UPDATE
+
+    public function delete($id): bool; //DELETE
 }

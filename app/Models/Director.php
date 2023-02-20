@@ -9,6 +9,8 @@ use App\Models\Pelicula;
 class Director extends Model
 {
     use HasFactory;
+
+    //Un director tiene varias peliculas
     function pelicula()
     {
         return $this->hasMany(Pelicula::class);
